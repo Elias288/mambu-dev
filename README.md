@@ -75,10 +75,16 @@ Nest is [MIT licensed](LICENSE).
 
 # Docker
 
-Para usar la imagen docker con variables de entorno: 
+Archivo de configuracion de mysql: [docker-compose.yml](./docker-compose.yml)
 
-`docker compose --env-file ./environments/.env.prod up`
+## Ejecutar imagen
 
-Para ver la imagen docker con sus variables de entorno: 
+```
+docker compose --env-file ./environments/.env.prod up
+```
 
-`docker compose --env-file ./environments/.env.prod config`
+## Comprobar variables de entorno 
+
+```
+docker compose --env-file ./environments/.env.prod config
+```
