@@ -3,17 +3,20 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClientsController } from './clients.controller';
-import { ClientsService } from '../service/clients.service';
-import { Address, Client } from './entity/client.entity';
+import { ClientMysqlService } from '../service/client-mysql.service';
+import { Client } from './entity/client.entity';
 import { MambuService } from 'src/service/mambu.service';
+import { AppUtils } from 'src/utils/app.utils';
+import { Address } from './entity/address.entity';
+import { IdDocument } from './entity/idDocument.entity';
 
 @Module({
   imports: [
     ConfigModule,
     HttpModule,
-    TypeOrmModule.forFeature([Client, Address]),
+    TypeOrmModule.forFeature([Client, IdDocument, Address]),
   ],
   controllers: [ClientsController],
-  providers: [ClientsService, ClientsService, MambuService],
+  providers: [ClientMysqlService, ClientMysqlService, MambuService, AppUtils],
 })
 export class ClientsModule {}

@@ -1,17 +1,15 @@
-import {
-  Column,
-  Entity,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Address } from './address.entity';
+import { IdDocument } from './idDocument.entity';
 
 @Entity({ name: 'client' })
 export class Client {
-  @PrimaryGeneratedColumn()
-  id: string;
-  @Column()
+  @PrimaryColumn()
   encodedKey: string;
+  @Column()
+  externalId: string;
+  @Column()
+  id: string;
   @Column()
   firstName: string;
   @Column()
@@ -23,37 +21,17 @@ export class Client {
   @Column()
   mobilePhone: string;
   @Column()
-  emailaddress: string;
+  emailAddress: string;
   @Column()
-  birtDate: string;
+  birthDate: string;
   @Column()
   gender: string;
   @Column()
   notes: string;
 
-  @OneToMany(() => Address, (address) => address.owner)
-  address: Address[];
-}
+  @OneToMany(() => IdDocument, (IdDocument) => IdDocument.clientKey)
+  idDocuments: IdDocument[];
 
-@Entity({ name: 'address' })
-export class Address {
-  @PrimaryGeneratedColumn()
-  id: string;
-  @Column()
-  encodedKey: string;
-  @Column()
-  linea1: string;
-  @Column()
-  linea2: string;
-  @Column()
-  city: string;
-  @Column()
-  country: string;
-  @Column()
-  postCode: string;
-  @Column()
-  region: string;
-
-  @ManyToOne(() => Client, (client) => client.address)
-  owner: Client;
+  @OneToMany(() => Address, (address) => address.clientKey)
+  addresses: Address[];
 }

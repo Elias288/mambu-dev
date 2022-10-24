@@ -88,3 +88,15 @@ docker compose --env-file ./environments/.env.prod up
 ```
 docker compose --env-file ./environments/.env.prod config
 ```
+
+## Joi
+
+[Joi documentation](https://joi.dev/api/?v=17.6.1)
+
+## UUID v4
+
+[Uuid v4 generator](https://www.uuidgenerator.net/version4)
+
+## Mambu
+
+[Mambu Documentation](https://api.mambu.com/)
